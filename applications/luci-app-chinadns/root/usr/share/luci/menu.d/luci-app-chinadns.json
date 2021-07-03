@@ -1,0 +1,13 @@
+{
+	"admin/services/chinadns": {
+		"action": {
+			"type": "cbi",
+			"path": "chinadns"
+		},
+		"depends": {
+			"acl": [
+				"luci-app-chinadns"
+			]
+		}
+	}
+}

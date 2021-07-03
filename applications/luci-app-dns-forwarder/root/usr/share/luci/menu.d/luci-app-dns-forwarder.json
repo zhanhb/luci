@@ -1,0 +1,13 @@
+{
+	"admin/services/dns-forwarder": {
+		"action": {
+			"type": "cbi",
+			"path": "dns-forwarder"
+		},
+		"depends": {
+			"acl": [
+				"luci-app-dns-forwarder"
+			]
+		}
+	}
+}

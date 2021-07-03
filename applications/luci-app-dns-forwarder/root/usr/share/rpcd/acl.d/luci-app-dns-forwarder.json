@@ -1,0 +1,14 @@
+{
+	"luci-app-dns-forwarder": {
+		"read": {
+			"uci": [
+				"dns-forwarder"
+			]
+		},
+		"write": {
+			"uci": [
+				"dns-forwarder"
+			]
+		}
+	}
+}
