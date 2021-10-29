@@ -7,7 +7,7 @@
 include $(TOPDIR)/rules.mk
 
 LUCI_TYPE:=col
-LUCI_BASENAME:=ssl
+LUCI_BASENAME:=ssl-nginx
 
 LUCI_TITLE:=LuCI with HTTPS support on Nginx (OpenSSL as SSL backend)
 LUCI_DESCRIPTION:=LuCI with OpenSSL as the SSL backend (libustream-openssl). \
