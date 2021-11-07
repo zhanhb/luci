@@ -8,6 +8,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=rpcd-mod-rrdns
 PKG_VERSION:=20170710
+PKG_RELEASE:=1
 PKG_MAINTAINER:=Jo-Philipp Wich <jo@mein.io>
 
 PKG_LICENSE:=Apache-2.0
@@ -41,6 +42,11 @@ endef
 define Package/rpcd-mod-rrdns/postinst
 #!/bin/sh
 [ -n "$$IPKG_INSTROOT" ] || /etc/init.d/rpcd reload
+endef
+
+define Package/rpcd-mod-rrdns/postrm
+#!/bin/sh
+[ -n "$$IPKG_INSTROOT" ] || [ "$$PKG_UPGRADE" = 1 ] || /etc/init.d/rpcd reload
 endef
 
 $(eval $(call BuildPackage,rpcd-mod-rrdns))
