@@ -8,7 +8,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=rpcd-mod-luci
 PKG_VERSION:=20230123
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 PKG_MAINTAINER:=Jo-Philipp Wich <jo@mein.io>
 
 PKG_LICENSE:=Apache-2.0
@@ -50,6 +50,11 @@ endef
 define Package/rpcd-mod-luci/postinst
 #!/bin/sh
 [ -n "$$IPKG_INSTROOT" ] || /etc/init.d/rpcd reload
+endef
+
+define Package/rpcd-mod-luci/postrm
+#!/bin/sh
+[ -n "$$IPKG_INSTROOT" ] || [ "$$PKG_UPGRADE" = 1 ] || /etc/init.d/rpcd reload
 endef
 
 $(eval $(call BuildPackage,rpcd-mod-luci))
