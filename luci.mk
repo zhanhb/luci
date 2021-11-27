@@ -76,7 +76,11 @@ LUCI_LIBRARYDIR = $(LUA_LIBRARYDIR)/luci
 define findrev
   $(shell \
     if git log -1 >/dev/null 2>/dev/null; then \
-      set -- $$(git log -1 --format="%ct %h" --abbrev=7 -- $(if $(1),. ':(exclude)po',po)); \
+      if [ -n "$$(git log -1 "@{u}.." -- $(if $(1),. ':(exclude)po',po) 2>/dev/null)" ] && ts=$$({ git ls-files -z -- $(if $(1),':(exclude)po' .,po) 2>/dev/null; printf -- "-printf\\0%%T@\\n\\0"; } | xargs -0 find | sort -rn | head -n1 | cut -d. -f1); then \
+        set -- "$${ts}" local; \
+      else \
+        set -- $$(git log -1 --format="%ct %h" --abbrev=7 -- $(if $(1),. ':(exclude)po',po)); \
+      fi; \
       if [ -n "$$1" ]; then
         secs="$$(($$1 % 86400))"; \
         yday="$$(date --utc --date="@$$1" "+%y.%j")"; \
