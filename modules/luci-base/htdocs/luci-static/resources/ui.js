@@ -378,7 +378,7 @@ var UITextfield = UIElement.extend(/** @lends LuCI.ui.Textfield.prototype */ {
 		});
 
 		if (this.options.password) {
-			frameEl.appendChild(E('div', { 'class': 'control-group' }, [
+			frameEl.appendChild(E('div', { 'class': 'control-group nowrap' }, [
 				inputEl,
 				E('button', {
 					'class': 'cbi-button cbi-button-neutral',
