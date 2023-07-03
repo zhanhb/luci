@@ -105,7 +105,7 @@ return view.extend({
 							o = s.taboption('general', form.Value, 'tunnel_address',
 								_('Tunnel address'),
 								_('The address ss-tunnel will forward traffic to'));
-							o.datatype = 'hostport';
+							o.datatype = 'or(hostport,ipaddrport(1))';
 						}
 					}
 					if (stype === 'ss_local' || stype === 'ss_server') {
